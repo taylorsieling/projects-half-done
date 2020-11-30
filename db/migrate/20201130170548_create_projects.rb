@@ -4,6 +4,7 @@ class CreateProjects < ActiveRecord::Migration
       t.string :name
       t.string :category
       t.integer :knit_time
+      t.integer :user_id
       t.timestamps null: false
     end
   end
