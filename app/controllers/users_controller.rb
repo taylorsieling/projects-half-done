@@ -12,7 +12,8 @@ class UsersController < ApplicationController
 
   # POST: /users
   post "/users" do
-    redirect "/users/:id"
+    user = User.create(params[:user])
+    redirect "/users/#{user.id}"
   end
 
   # GET: /users/5
