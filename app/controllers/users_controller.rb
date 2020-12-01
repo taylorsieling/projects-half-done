@@ -14,17 +14,17 @@ class UsersController < ApplicationController
   end
 
   post "/login" do
-    @user = User.find_by_username(params[:user][:username])
+    !params[:user][:username].blank? ? @user = User.find_by_username(params[:user][:username]) : @user = User.find_by_email(params[:user][:email])
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
       redirect "/users/#{@user.id}"
-    else redirect "/login"
+    else 
+      flash[:alert] = "Invalid Login. Please try again."
+      redirect "/login"
     end
     erb :"user"
   end
 
-  # getting error with attempting to interpolate in erb
-  # research later
   get "/users/:id" do
     @user = User.find_by(id: params[:id])
     erb :"/users/show"
