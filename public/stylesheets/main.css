@@ -79,15 +79,37 @@
   }
 
   .sidebar {
-    background: #eee;
-    border: 1px solid #ccc;
     float: right;
     padding: 2.08333333333%; /* 5px / 240px */
     width: 30%; /* 240px / 800px */
   }
 
   .sidebar ul {
-    font-size: 14px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  }
+  
+  .sidebar li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  
+  .sidebar li a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .sidebar li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
   }
 
   .branding {

@@ -36,13 +36,18 @@ class UsersController < ApplicationController
   end
 
   get "/users/:id/edit" do
+    @user = User.find_by_id(params[:id])
     erb :"/users/edit"
   end
 
-  # # PATCH: /users/5
-  # patch "/users/:id" do
-  #   redirect "/users/:id"
-  # end
+  patch "/users/:id" do
+    @user = User.find_by_id(params[:id])
+    @user.username = params[:username]
+    @user.email = params[:email]
+    @user.password = params[:password]
+    @user.save
+    redirect to "/users/#{@user.id}"
+  end
 
   # # DELETE: /users/5/delete
   # delete "/users/:id/delete" do

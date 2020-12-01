@@ -8,3 +8,4 @@ run ApplicationController
 use YarnsController
 use ProjectsController
 use UsersController
+use Rack::MethodOverride
