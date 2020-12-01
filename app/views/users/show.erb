@@ -1,1 +1,15 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h2>Welcome, <%= "#{@user.username}" %>!<h2>
+
+<h3>Your Projects:</h3>
+
+<div>
+<% Project.all.each do |project|%>
+    <h4><%= "#{project.name}"%></h4>
+    <p>Category: <%= "#{project.category}"%><br>
+    Knit Time: <%= "#{project.knit_time}"%> hours</p>
+<% end %>
+</div>
+
+<h3>Your Yarn:</h3>
+
+

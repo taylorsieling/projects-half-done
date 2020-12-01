@@ -1,7 +1,7 @@
-hh = User.create({username: "hollyhawthorth", email: "hollyh@email.com", password_digest: "druidsrock"})
-sa = User.create({username: "serynarweiniad", email: "seryna@email.com", password_digest: "clericsrock"})
-ts = User.create({username: "tealstagheart", email: "teals@email.com", password_digest: "warlocksrock"})
-oi = User.create({username: "opheliainkwell", email: "opheliai@email.com", password_digest: "wizardsrock"})
+hh = User.create({username: "hollyhawthorn", email: "hollyh@email.com", password: "druidsrock"})
+sa = User.create({username: "serynarweiniad", email: "seryna@email.com", password: "clericsrock"})
+ts = User.create({username: "tealstagheart", email: "teals@email.com", password: "warlocksrock"})
+oi = User.create({username: "opheliainkwell", email: "opheliai@email.com", password: "wizardsrock"})
 
 hat = Project.create({name: "Mushroom Hat", category: "Apparel", knit_time: 5, user_id: hh.id})
 bag = Project.create({name: "Bag of Holding", category: "Accessory", knit_time: 10, user_id: hh.id})
