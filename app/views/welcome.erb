@@ -1,24 +1,21 @@
 <style>
 
-.button {
-  background-color: white;
-  border: none;
-  border-radius: 4px;
-  color: black;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-}
-
-.button:hover {
-  background-color: #grey;
-  color: lightpink;
-}
+a:link, a:visited {
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  a:hover, a:active {
+    background-color: white;
+    color: #a35559;
+  }
+  
 </style>
 
 <div class="wrapper">
@@ -29,8 +26,8 @@
     <div class="content">
       <p>Sign up or Login to get those projects done!</p>
 
-        <button class="button">Singup</button>
-        <button class="button">Login</button>
+        <a href="/signup">Singup</a>
+        <a href="/login">Login</a>
 
     </div>
 

@@ -35,10 +35,9 @@ class UsersController < ApplicationController
     erb :"/users/show"
   end
 
-  # # GET: /users/5/edit
-  # get "/users/:id/edit" do
-  #   erb :"/users/edit"
-  # end
+  get "/users/:id/edit" do
+    erb :"/users/edit"
+  end
 
   # # PATCH: /users/5
   # patch "/users/:id" do
