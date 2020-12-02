@@ -16,7 +16,7 @@
   <body>
     <div class="wrapper">
 
-    <header><img src="public/images/phdlogo.png" class="img-responsive main-img"></header>
+    <header><img src="/images/phdlogo.png" class="img-responsive main-img"></header>
 
       <% flash.keys.each do |type| %>
         <div data-alert class="flash <%= type %> alert-box radius">
@@ -28,6 +28,8 @@
       <br>
 
         <%= yield %>
+
+      <br>
 
       <footer class="branding">
         <small>&copy; 2020 <strong>ProjectsHalfDone</strong></small>

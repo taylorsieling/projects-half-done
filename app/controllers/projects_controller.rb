@@ -2,12 +2,13 @@ class ProjectsController < ApplicationController
 
   # GET: /projects
   get "/projects" do
+    @projects = current_user.projects
     erb :"/projects/index.html"
   end
 
   # GET: /projects/new
   get "/projects/new" do
-    erb :"/projects/new.html"
+    erb :"/projects/new"
   end
 
   # POST: /projects
