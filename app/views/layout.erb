@@ -35,7 +35,7 @@
         <small>&copy; 2020 <strong>ProjectsHalfDone</strong></small>
         <% if logged_in? %>
           <a href="/logout">Logout</a>
-          <a href="/users/:id/edit">Account</a>
+          <a href="/users/<%= "#{current_user.id}" %>/edit">Account</a>
         <% end %>
       </footer>
     </div>

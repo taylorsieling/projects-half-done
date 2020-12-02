@@ -1,24 +1,29 @@
 class ProjectsController < ApplicationController
 
-  # GET: /projects
   get "/projects" do
     @projects = current_user.projects
     erb :"/projects/index"
   end
 
-  # GET: /projects/new
   get "/projects/new" do
     erb :"/projects/new"
   end
 
-  # POST: /projects
   post "/projects" do
-    redirect "/projects"
+    project = Project.new(params[:project])
+    if project.save
+      current_user.projects << project
+      flash[:notice] = "You have successfully created a new project!"
+      redirect "/projects/#{project.id}"
+    else
+      flash[:message] = "All fields are required."
+      redirect "projects/new"
+    end
   end
 
-  # GET: /projects/5
   get "/projects/:id" do
-    erb :"/projects/show.html"
+    @project = Project.find_by_id(params[:id])
+    erb :"/projects/show"
   end
 
   # GET: /projects/5/edit
