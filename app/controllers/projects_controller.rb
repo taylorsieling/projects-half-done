@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   # GET: /projects
   get "/projects" do
     @projects = current_user.projects
-    erb :"/projects/index.html"
+    erb :"/projects/index"
   end
 
   # GET: /projects/new
