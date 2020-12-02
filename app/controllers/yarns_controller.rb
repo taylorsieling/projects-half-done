@@ -2,12 +2,13 @@ class YarnsController < ApplicationController
 
   # GET: /yarns
   get "/yarns" do
-    erb :"/yarns/index.html"
+    erb :"/yarns/index"
   end
 
   # GET: /yarns/new
   get "/yarns/new" do
-    erb :"/yarns/new.html"
+    @projects = current_user.projects
+    erb :"/yarns/new"
   end
 
   # POST: /yarns

@@ -1,11 +1,7 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<h1>Create a new hank of yarn!</h1>
+<br>
 
- <!--Yarn Info-->
-
-     <h2>Required Yarn</h2>
-     <br>
-
-    <!--First Yarn-->
+    <form method="POST" action="/yarns">
 
         <p><label for="yarn_name_1">Yarn Name:</label>
         <input type="text" name="project[yarns][][name]" id="yarn_name_1"></p>
@@ -19,38 +15,22 @@
         <p><label for="yarn_quantity_1">Quantity:</label>
         <input type="number" name="project[yarn][][quantity]" id="yarn_quantity_1"></p>
 
-        <br><br>
+        <br>
+        <h2>Add your yarn to a project:</h2>
+        <br>
 
-    <!--Second Yarn-->
-
-        <p><label for="yarn_name_2">Yarn Name:</label>
-        <input type="text" name="project[yarns][][name]" id="yarn_name_2"></p>
-
-        <p><label for="yarn_weight_2">Weight:</label>
-        <input type="text" name="project[yarn][][weight]" id="yarn_weight_2"></p>
-
-        <p><label for="yarn_color_2">Color:</label>
-        <input type="text" name="project[yarn][][color]" id="yarn_color_2"></p>
-
-        <p><label for="yarn_quantity_2">Quantity:</label>
-        <input type="number" name="project[yarn][][quantity]" id="yarn_quantity_2"></p>
+        <% if @projects  == [] || @projects == nil %>
+            <p>You have no current projects! Please create a new one.</p>
+        <% else %>
+            <% @projects.each do |project| %>
+                <div id="radio">
+                    <input type="radio" name="yarn[project_id]" id="<%= project.id %>" value="<%= project.id %>"><%= "#{project.name}" %><br>
+                </div>
+            <% end %>
+        <% end %>
 
         <br><br>
 
-    <!--Third Yarn-->
+        <p><input type="submit" value="Create"></p>
 
-        <p><label for="yarn_name_3">Yarn Name:</label>
-        <input type="text" name="project[yarns][][name]" id="yarn_name_3"></p>
-
-        <p><label for="yarn_weight_3">Weight:</label>
-        <input type="text" name="project[yarn][][weight]" id="yarn_weight_3"></p>
-
-        <p><label for="yarn_color_3">Color:</label>
-        <input type="text" name="project[yarn][][color]" id="yarn_color_3"></p>
-
-        <p><label for="yarn_quantity_3">Quantity:</label>
-        <input type="number" name="project[yarn][][quantity]" id="yarn_quantity_3"></p>
-
-        <br><br>
-
-    <!--End Yarn-->
+    </form
