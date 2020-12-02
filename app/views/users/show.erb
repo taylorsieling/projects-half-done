@@ -3,13 +3,11 @@
 <h3>Your Projects:</h3>
 
 <div>
-<% Project.all.each do |project|%>
+<% @user.projects.each do |project|%>
     <h4><%= "#{project.name}"%></h4>
     <p>Category: <%= "#{project.category}"%><br>
     Knit Time: <%= "#{project.knit_time}"%> hours</p>
 <% end %>
 </div>
-
-<h3>Your Yarn:</h3>
 
 
