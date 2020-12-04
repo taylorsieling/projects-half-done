@@ -7,7 +7,26 @@
 
 <br><br>
 
-<div class="form-style-5">
+<h3>Project Yarn: </h3>
+<br>
+
+  <% if @project.yarns  == [] || @project.yarns == nil %>
+    <p>This project currently does not have any associated yarn!<br>
+    <a href="/yarns/new">Add yarn to your project here.</a></p>
+  <% else %>
+    <% @project.yarns.each do |yarn| %>
+      <div>
+      <p><%= "#{yarn.name}" %><br>
+      Color: <%= "#{yarn.color}" %><br>
+      Weight: <%= "#{yarn.weight}" %><br>
+      Quantity: <%= "#{yarn.quantity}" %></p>
+      </div>     
+    <% end %>
+  <% end %>
+
+        <br><br>
+
+<div>
 
 <a href="/projects/<%= "#{@project.id}" %>/edit">Edit Project</a>
 <form action="/projects/<%= @project.id %>" method="post">

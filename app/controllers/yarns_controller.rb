@@ -1,29 +1,30 @@
 class YarnsController < ApplicationController
 
-  # GET: /yarns
   get "/yarns" do
     erb :"/yarns/index"
   end
 
-  # GET: /yarns/new
   get "/yarns/new" do
     @projects = current_user.projects
     erb :"/yarns/new"
   end
 
-  # POST: /yarns
   post "/yarns" do
+    @yarn = Yarn.create(params[:yarn])
+    @project = Project.find_by_id(params[:id])
+    @project.yarns << @yarn
+    binding.pry
     redirect "/yarns"
   end
 
   # GET: /yarns/5
   get "/yarns/:id" do
-    erb :"/yarns/show.html"
+    erb :"/yarns/show"
   end
 
   # GET: /yarns/5/edit
   get "/yarns/:id/edit" do
-    erb :"/yarns/edit.html"
+    erb :"/yarns/edit"
   end
 
   # PATCH: /yarns/5
