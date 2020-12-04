@@ -83,6 +83,18 @@
     color: #a35559;
   }
 
+
+  input.delete input[type=submit] {
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+
   .sidebar {
     float: right;
     padding: 2.08333333333%; /* 5px / 240px */

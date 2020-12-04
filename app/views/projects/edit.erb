@@ -1,1 +1,29 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h1>Edit your Project!</h1>
+<br>
+
+<form method="POST" action="/projects/<%= @project.id %>" >
+
+    <input id="hidden" type="hidden" name="_method" value="patch">
+
+    <p><label for="name">Project Name: </label>
+    <input type="text" name="project[name]" id="name" value="<%= @project.name %>"></p>
+
+    <p><label for="category">Project Category: </label>
+    <input type="text" name="project[category]" id="category" value="<%= @project.category %>"></p>
+
+    <p><label for="knit_time">Knit Time: </label>
+    <input type="number" name="project[knit_time]" id="knit_time" value="<%= @project.knit_time %>"></p>
+
+    <p>Current Status: <%= @project.status %></p>
+    
+    <p>New Status:</p>
+    <label for="status">Not Started</label>
+    <input type="radio" name="project[status]" id="status" value="Not Started"></p>
+    <label for="status">In Progress</label>
+    <input type="radio" name="project[status]" id="status" value="In Progress"></p>
+    <label for="status">Completed</label>
+    <input type="radio" name="project[status]" id="status" value="Completed"></p>
+
+    <p><input type="submit" value="Update"></p>
+
+</form>

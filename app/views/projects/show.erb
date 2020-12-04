@@ -3,5 +3,18 @@
 
 <p>Category: <%= "#{@project.category}" %></p>
 <p>Knit Time: <%= "#{@project.knit_time}" %> hours</p>
+<p>Status: <%= "#{@project.status}"%></p>
+
+<br><br>
+
+<div class="form-style-5">
+
+<a href="/projects/<%= "#{@project.id}" %>/edit">Edit Project</a>
+<form action="/projects/<%= @project.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="Delete">
+  <input type="submit" value="Delete">
+</form>
+
+</div>
 
 <br><br>

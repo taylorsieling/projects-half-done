@@ -28,16 +28,31 @@ class ProjectsController < ApplicationController
 
   # GET: /projects/5/edit
   get "/projects/:id/edit" do
-    erb :"/projects/edit.html"
+    @project = Project.find_by_id(params[:id])
+    erb :"/projects/edit"
   end
 
   # PATCH: /projects/5
   patch "/projects/:id" do
-    redirect "/projects/:id"
+    user = current_user
+    @project = Project.find_by_id(params[:id])
+    @project.update(params[:project])
+    if @project.save
+      redirect "/projects/#{@project.id}"
+    else
+      redirect "/users/#{user.id}"
+    end
   end
 
-  # DELETE: /projects/5/delete
-  delete "/projects/:id/delete" do
-    redirect "/projects"
+
+  delete "/projects/:id" do
+    project = Project.find_by_id(params[:id])
+    if project.user != current_user
+      redirect to '/'
+    else 
+      project.destroy
+      redirect "/projects"
+    end
   end
+
 end
