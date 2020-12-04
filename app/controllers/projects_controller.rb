@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
 
   get "/projects" do
     @projects = current_user.projects
-    erb :"/projects/index"
+    redirect "/users/#{current_user.id}"
   end
 
   get "/projects/new" do
@@ -44,12 +44,12 @@ class ProjectsController < ApplicationController
     end
   end
 
-
   delete "/projects/:id" do
     project = Project.find_by_id(params[:id])
     if project.user != current_user
       redirect to '/'
     else 
+      flash[:message] = "#{project.name} has been deleted successfully!"
       project.destroy
       redirect "/projects"
     end
