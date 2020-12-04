@@ -67,7 +67,11 @@
     width: 60%; /* 480px / 800px */
   }
 
-  a:link, a:visited {
+  a.hover, a.active {
+    color: white;
+  }
+
+  a.button:link, a.button:visited {
     background-color: white;
     color: black;
     border: none;
@@ -78,7 +82,7 @@
     display: inline-block;
   }
   
-  a:hover, a:active {
+  a.button:hover, a.button:active {
     background-color: white;
     color: #a35559;
   }

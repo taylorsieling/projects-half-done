@@ -1,4 +1,4 @@
-<h2><%= "#{@yarn.name}" %></h2>
+<h2><%= "#{@yarn.brand}" %>: <%= "#{@yarn.name}" %></h2>
 <br>
 
 <p>Color: <%= "#{@yarn.color}" %></p>
@@ -10,7 +10,7 @@
 
 <div>
 
-<a href="/yarns/<%= "#{@yarn.id}" %>/edit">Edit yarn</a>
+<a class="button" href="/yarns/<%= "#{@yarn.id}" %>/edit">Edit yarn</a>
 <form action="/yarns/<%= @yarn.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="Delete">
   <input type="submit" value="Delete">

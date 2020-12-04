@@ -22,17 +22,21 @@ class YarnsController < ApplicationController
     erb :"/yarns/show"
   end
 
-  # GET: /yarns/5/edit
   get "/yarns/:id/edit" do
+    @yarn = Yarn.find_by_id(params[:id])
     erb :"/yarns/edit"
   end
 
-  # PATCH: /yarns/5
   patch "/yarns/:id" do
-    redirect "/yarns/:id"
+    @yarn = Yarn.find_by_id(params[:id])
+    @yarn.update(params[:yarn])
+    if @yarn.save
+      redirect "/yarns/#{@yarn.id}"
+    else
+      redirect "/users/#{user.id}"
+    end
   end
 
-  # DELETE: /yarns/5/delete
   delete "/yarns/:id/delete" do
     redirect "/yarns"
   end

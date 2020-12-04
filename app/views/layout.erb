@@ -35,8 +35,8 @@
       <footer class="branding">
         <small>&copy; 2020 <strong>ProjectsHalfDone</strong></small>
         <% if logged_in? %>
-          <a href="/logout">Logout</a>
-          <a href="/users/<%= "#{current_user.id}" %>/edit">Account</a>
+          <a class="button" href="/logout">Logout</a>
+          <a class="button" href="/users/<%= "#{current_user.id}" %>/edit">Account</a>
         <% end %>
       </footer>
     </div>
