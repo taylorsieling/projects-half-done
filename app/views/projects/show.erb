@@ -16,7 +16,7 @@
   <% else %>
     <% @project.yarns.each do |yarn| %>
       <div>
-      <p><%= "#{yarn.name}" %><br>
+      <p><%= "#{yarn.brand}" %>: <%= "#{yarn.name}" %><br>
       Color: <%= "#{yarn.color}" %><br>
       Weight: <%= "#{yarn.weight}" %><br>
       Quantity: <%= "#{yarn.quantity}" %></p>
