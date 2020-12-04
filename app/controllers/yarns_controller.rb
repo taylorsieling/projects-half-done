@@ -17,8 +17,8 @@ class YarnsController < ApplicationController
     redirect "/yarns"
   end
 
-  # GET: /yarns/5
   get "/yarns/:id" do
+    @yarn = Yarn.find_by_id(params[:id])
     erb :"/yarns/show"
   end
 

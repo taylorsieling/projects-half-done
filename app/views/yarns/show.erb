@@ -1,1 +1,21 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h2><%= "#{@yarn.name}" %></h2>
+<br>
+
+<p>Color: <%= "#{@yarn.color}" %></p>
+<p>Weight: <%= "#{@yarn.weight}" %> hours</p>
+<p>Quantity: <%= "#{@yarn.quantity}"%></p>
+
+<br><br>
+
+
+<div>
+
+<a href="/yarns/<%= "#{@yarn.id}" %>/edit">Edit yarn</a>
+<form action="/yarns/<%= @yarn.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="Delete">
+  <input type="submit" value="Delete">
+</form>
+
+</div>
+
+<br><br>
