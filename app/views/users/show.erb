@@ -1,13 +1,77 @@
-<h2>Welcome, <%= "#{@user.username}" %>!<h2>
+<section class="hero is-dark">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Welcome, <%= "#{@user.username}" %>!
+      </h1>
+    </div>
+  </div>
+</section>
 
-<h3>Your Projects:</h3>
+<div class="hero is-light">
+    <div class="hero-body mx-6 px-6">
 
-<div>
-<% @user.projects.each do |project|%>
-    <h4><a href="/projects/<%= "#{project.id}" %>"><%= "#{project.name}" %></a></h4>
-    <p>Category: <%= "#{project.category}"%><br>
-    Knit Time: <%= "#{project.knit_time}"%> hours</p>
-<% end %>
+        <div class="container p-4"> 
+            <h2 class="subtitle is-4">Your Projects:</h2>
+        </div>
+        
+        <div class="columns">
+            <% @user.projects.each do |project|%>
+                <div class="column">
+                    <div class="card">
+                        <header class="card-header">
+                            <p class="card-header-title">
+                                <%= "#{project.name}" %>
+                            </p>
+                        </header>
+                        <div class="card-content">
+                            <div class="content">
+                                Category: <%= "#{project.category}"%><br>
+                                Knit Time: <%= "#{project.knit_time}"%> hours<br>
+                                Status: <%= "#{project.status}" %>
+                            </div>
+                        </div>
+                        <footer class="card-footer">
+                            <a href="/projects/<%= "#{project.id}" %>" class="card-footer-item">View</a>
+                            <a href="/projects/<%= "#{project.id}" %>/edit" class="card-footer-item">Edit</a>
+                        </footer>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+
+        <br><br>
+
+        <div class="container p-4"> 
+            <h2 class="subtitle is-4">Your Yarn:</h2>
+        </div>
+        
+        <div class="columns">
+            <% @user.projects.each do |project|%>
+                <div class="column">
+                    <div class="card">
+                        <header class="card-header">
+                            <p class="card-header-title">
+                                <%= "#{project.name}" %>
+                            </p>
+                        </header>
+                        <div class="card-content">
+                            <div class="content">
+                                Category: <%= "#{project.category}"%><br>
+                                Knit Time: <%= "#{project.knit_time}"%> hours<br>
+                                Status: <%= "#{project.status}" %>
+                            </div>
+                        </div>
+                        <footer class="card-footer">
+                            <a href="/projects/<%= "#{project.id}" %>" class="card-footer-item">View</a>
+                            <a href="/projects/<%= "#{project.id}" %>/edit" class="card-footer-item">Edit</a>
+                        </footer>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+
+    </div>
 </div>
 
 
