@@ -51,12 +51,20 @@
               </a>
           
               <hr class="navbar-divider">
+
               <a class="navbar-item" href="/projects/new">
                 Create Project
               </a>
               <a class="navbar-item" href="/yarns/new">
                 Create Yarn
               </a>
+
+              <hr class="navbar-divider">
+
+              <a class="navbar-item" href="/users/<%="#{current_user.id}" %>/edit">
+                Edit Account
+              </a>
+
           </div>
         </div>
       </div>
@@ -65,32 +73,20 @@
         <div class="navbar-item">
           <div class="field is-grouped">
             <p class="control">
-              <a class="button is-light" href="/" >
-                <span class="icon">
-                  <i class="fab fa-twitter"></i>
-                </span>
-                <span>
-                  Account
-                </span>
-              </a>
-            </p>
-            <p class="control">
               <a class="button is-dark" href="/logout">
-                <span class="icon">
-                  <i class="fas fa-sign-out"></i>
-                </span>
                 <span>Logout</span>
               </a>
             </p>
           </div>
+
         </div>
       </div>
     </div>
   </nav>
 
-      <br>
-        <%= yield %>
-      <br>
+
+      <%= yield %>
+ 
 
       <footer class="footer">
         <div class="content has-text-centered">
