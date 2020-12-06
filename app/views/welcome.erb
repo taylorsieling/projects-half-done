@@ -1,28 +1,79 @@
-<div class="wrapper">
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
   
-  <div class="col-md-8 col-md-offset-2">
-    <h2>Working on your PhD?</h2>
+  <head>
 
-    <div class="content">
-      <p>Sign up or Login to get those projects done!</p>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 
-        <a class="button" href="/signup">Signup</a>
-        <a class="button" href="/login">Login</a>
+    <title>Projects Half Done</title>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- ↑ BULMA REQUIREMENT : this line makes the site RESPONSIVE -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <!-- ↑ BULMA : Predesigned external CSS : 'free, open source CSS framework based on Flexbox..' "https://github.com/jgthms/bulma/blob/master/css/bulma.css"-->
+
+    <!-- <link rel="stylesheet" href="/stylesheets/main.css" /> -->
+  </head>
+
+  <body>
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <img src="/images/phd-nav-logo.png" width="112" height="28">
+        </a>
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-dark" href="/signup">
+              <strong>Sign up</strong>
+            </a>
+            <a class="button is-light" href="login">
+              Log in
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
+  </nav>
 
-    <!--Sidebar
+    <section class="hero is-light is-fullheight-with-navbar">
+      <div class="hero-body">
+        <div class="container">
+          <div class="container">
+              <h1 class="title px-6">Projects Half Done</h1>
+              <h2 class="subtitle px-6">Tracking your knitting projects one stitch at a time.</h2>
+            </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="sidebar">
-      <ul>
-        <li><a class="active" href="/">Home</a></li>
-        <li><a href="/projects">My Projects</a></li>
-        <li><a href="/yarn">My Yarn</a></li>
-        <li><a href="/logout">Logout</a></li>
-      </ul>
-    </div>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Projects Half Done</strong> by Taylor Sieling. The source code is licensed
+          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+        </p>
+      </div>
+    </footer>
 
-    -->
-    
-  </div>
-</div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <!--[if lt IE 7]>
+      <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+      <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+    <![endif]-->
+  </body>
+</html>

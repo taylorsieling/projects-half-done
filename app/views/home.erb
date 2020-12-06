@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+  <head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+
+    <title>Projects Half Done</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- ↑ BULMA REQUIREMENT : this line makes the site RESPONSIVE -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <!-- ↑ BULMA : Predesigned external CSS : 'free, open source CSS framework based on Flexbox..' "https://github.com/jgthms/bulma/blob/master/css/bulma.css"-->
+
+    <!-- <link rel="stylesheet" href="/stylesheets/main.css" /> -->
+  </head>
+  <body>
+
+      <br>
+
+        <%= yield %>
+
+      <br>
+
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Projects Half Done</strong> by Taylor Sieling. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+          </p>
+        </div>
+      </footer>
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <!--[if lt IE 7]>
+      <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+      <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+    <![endif]-->
+  </body>
+</html>

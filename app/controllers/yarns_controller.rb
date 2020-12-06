@@ -11,10 +11,13 @@ class YarnsController < ApplicationController
 
   post "/yarns" do
     @yarn = Yarn.create(params[:yarn])
-    @project = Project.find_by_id(params[:id])
+    @project = @yarn.project_id
+    if @project == nil
+    else
     @project.yarns << @yarn
     binding.pry
     redirect "/yarns"
+    end
   end
 
   get "/yarns/:id" do
@@ -38,6 +41,10 @@ class YarnsController < ApplicationController
   end
 
   delete "/yarns/:id/delete" do
+    yarn = Yarn.find_by_id(params[:id])
+    flash[:message] = "#{yarn.brand}: #{yarn.name} has been deleted successfully!"
+    project.destroy
     redirect "/yarns"
   end
+
 end
