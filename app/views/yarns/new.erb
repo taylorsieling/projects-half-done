@@ -1,39 +1,100 @@
-<h1>Create a new hank of yarn!</h1>
-<br>
+<section class="hero is-dark">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Add a new hank of yarn!
+      </h1>
+    </div>
+  </div>
+</section>
 
-    <form method="POST" action="/yarns">
+<div class="hero is-light">
 
-        <p><label for="yarn_brand_1">Brand:</label>
-        <input type="text" name="project[yarns][][brand]" id="yarn_brand_1"></p>
-        
-        <p><label for="yarn_name_1">Name:</label>
-        <input type="text" name="project[yarns][][name]" id="yarn_name_1"></p>
+    <div class="hero-body mx-6 px-6">
 
-        <p><label for="yarn_weight_1">Weight:</label>
-        <input type="text" name="project[yarns][][weight]" id="yarn_weight_1"></p>
+        <form method="POST" action="/yarns">
 
-        <p><label for="yarn_color_1">Color:</label>
-        <input type="text" name="project[yarns][][color]" id="yarn_color_1"></p>
-
-        <p><label for="yarn_quantity_1">Quantity:</label>
-        <input type="number" name="project[yarns][][quantity]" id="yarn_quantity_1"></p>
-
-        <br>
-        <h2>Add your yarn to a project:</h2>
-        <br>
-
-        <% if @projects  == [] || @projects == nil %>
-            <p>You have no current projects! Please create a new one.</p>
-        <% else %>
-            <% @projects.each do |project| %>
-                <div id="radio">
-                    <input type="radio" name="yarn[project_id]" id="<%= project.id %>" value="<%= project.id %>"><%= "#{project.name}" %><br>
+            <div class="columns">
+                <div class="column">
+                    <div class="field">
+                        <label for="brand" class="label">Brand: </label>
+                        <div class="control">
+                            <input class="input is-medium is-hovered" type="text" name="yarn[brand]" id="brand">
+                        </div>
+                    </div>
                 </div>
-            <% end %>
-        <% end %>
+        
+                <div class="column">
+                    <div class="field">
+                        <label for="name" class="label">Name: </label>
+                        <div class="control">
+                            <input class="input is-medium is-hovered" type="text" name="yarn[name]" id="name">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <br><br>
+             <div class="columns">
+                <div class="column">
+                    <div class="field">
+                        <label for="weight" class="label">Weight:</label>
+                        <div class="control">
+                            <input class="input is-medium is-hovered" type="text" name="yarn[weight]" id="weight">
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="column">
+                    <div class="field">
+                        <label for="color" class="label">Color: </label>
+                        <div class="control">
+                            <input class="input is-medium is-hovered" type="text" name="yarn[color]" id="color">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <p><input type="submit" value="Create"></p>
+             <div class="columns">
+                <div class="column">
+                    <div class="field">
+                        <label for="quantity" class="label">Quantity:</label>
+                        <div class="control">
+                            <input class="input is-medium is-hovered" type="number" name="yarn[quantity]" id="quantity">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    </form
+            <br>
+            <label class="label">Add your yarn to a project:</label>
+                <% if @projects  == [] || @projects == nil %>
+                    <p>You have no current projects! Please create a new one.</p>
+                <% else %>
+             <br>   
+            <div class="control">
+                    <% @projects.each do |project| %>
+                        <label for="<%= project.id %>" class="radio">
+                            <input type="radio" name="yarn[project_id]" id="<%= project.id %>" value="<%= project.id %>">
+                            <%= "#{project.name}" %>
+                        </label>
+                    <% end %>
+                <% end %>
+            </div>
+
+
+            <br><br>
+        
+            <div class="field is-grouped">
+                <div class="control">
+                     <input type="submit" class="button is-medium is-dark" value="Create">
+                </div>
+                <div class="control">
+                    <button class="button is-medium"><a href="/yarns/<%="#{current_user.id}"%>">Cancel</a></button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

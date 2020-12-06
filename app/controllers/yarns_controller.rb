@@ -11,13 +11,7 @@ class YarnsController < ApplicationController
 
   post "/yarns" do
     @yarn = Yarn.create(params[:yarn])
-    @project = @yarn.project_id
-    if @project == nil
-    else
-    @project.yarns << @yarn
-    binding.pry
     redirect "/yarns"
-    end
   end
 
   get "/yarns/:id" do
