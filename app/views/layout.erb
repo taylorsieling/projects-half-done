@@ -33,20 +33,20 @@
 
     <div id="navbarExampleTransparentExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item" href="/">
+        <a class="navbar-item" href="/users/<%= "#{current_user.id}" %>">
           Home
         </a>
 
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" href="https://bulma.io/documentation/overview/start/">
+          <a class="navbar-link" href="/users/<%= "#{current_user.id}" %>">
             Menu
           </a>
 
           <div class="navbar-dropdown is-boxed">
-              <a class="navbar-item" href="/projects/index">
+              <a class="navbar-item" href="/projects">
                 Projects
               </a>
-              <a class="navbar-item" href="/yarns/index">
+              <a class="navbar-item" href="/yarns">
                 Yarn
               </a>
           

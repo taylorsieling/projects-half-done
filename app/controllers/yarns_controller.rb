@@ -1,6 +1,7 @@
 class YarnsController < ApplicationController
 
   get "/yarns" do
+    @user = current_user
     erb :"/yarns/index"
   end
 

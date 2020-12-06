@@ -1,39 +1,78 @@
-<h2><%= "#{@project.name}" %></h2>
-<br>
+<section class="hero is-dark">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        <%= "#{@project.name}" %>
+      </h1>
+    </div>
+  </div>
+</section>
 
-<p>Category: <%= "#{@project.category}" %></p>
-<p>Knit Time: <%= "#{@project.knit_time}" %> hours</p>
-<p>Status: <%= "#{@project.status}"%></p>
+<div class="hero is-light">
+  <div class="hero-body mx-6 px-6">
+    <div class="box p-6">
 
-<br><br>
+      <div class="columns"> 
+        <div class="bd-focus-itm column has-text-centered">
+          <p class="title is-4"><strong>Category:</strong></p> 
+          <p class="subtitle is-6"><%= "#{@project.category}" %></p>
+        </div>
+        <div class="bd-focus-itm column has-text-centered">
+          <p class="title is-4"><strong>Knit Time:</strong></p> 
+          <p class="subtitle is-6"><%= "#{@project.knit_time}" %> Hours</p>
+        </div>
+        <div class="bd-focus-itm column has-text-centered">
+          <p class="title is-4"><strong>Status: </strong></p> 
+          <p class="subtitle is-6"><%= "#{@project.status}"%></p>
+        </div>
+      </div>
+    </div>
 
-<h3>Project Yarn: </h3>
-<br>
+      <div class="container m-6 p-6"> 
+          <h2 class="title is-4">Project Yarn:</h2>
+      </div>
 
-  <% if @project.yarns  == [] || @project.yarns == nil %>
-    <p>This project currently does not have any associated yarn!<br>
-    <a href="/yarns/new">Add yarn to your project here.</a></p>
-  <% else %>
-    <% @project.yarns.each do |yarn| %>
-      <div>
-      <p><%= "#{yarn.brand}" %>: <%= "#{yarn.name}" %><br>
-      Color: <%= "#{yarn.color}" %><br>
-      Weight: <%= "#{yarn.weight}" %><br>
-      Quantity: <%= "#{yarn.quantity}" %></p>
-      </div>     
-    <% end %>
-  <% end %>
 
-        <br><br>
+      <% if @project.yarns  == [] || @project.yarns == nil %> 
+        <p class="subtitle">This project currently does not have any associated yarn!<br>
+        <a href="/yarns/new">Add yarn to your project here.</a></p>
+      <% else %>
+      <div class="columns is-multiline m-2">
+        <% @project.yarns.each do |yarn|%>
+            <div class="column is-one-quarter">
+                <div class="card">
 
-<div>
+                    <header class="card-header">
+                      <p class="card-header-title">
+                        <%= "#{yarn.brand}" %>: <%= "#{yarn.name}" %>
+                      </p>
+                    </header>
+
+                    <div class="card-content">
+                      <div class="content">
+                        Weight: <%= "#{yarn.weight}"%><br>
+                        Color: <%= "#{yarn.color}"%><br>
+                        Quantity: <%= "#{yarn.quantity}" %>
+                      </div>
+                    </div>
+
+                    <footer class="card-footer">
+                      <a href="/yarns/<%= "#{yarn.id}" %>" class="card-footer-item">View</a>
+                      <a href="/yarns/<%= "#{yarn.id}" %>/edit" class="card-footer-item">Edit</a>
+                    </footer>
+
+                </div>
+            </div>
+        <% end %>
+      </div>
+      <% end %>
+
+  </div>
+</div>
+
 
 <a class="button" href="/projects/<%= "#{@project.id}" %>/edit">Edit Project</a>
 <form action="/projects/<%= @project.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="Delete">
   <input type="submit" value="Delete">
 </form>
-
-</div>
-
-<br><br>

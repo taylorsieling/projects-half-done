@@ -1,8 +1,9 @@
 class ProjectsController < ApplicationController
 
   get "/projects" do
+    @user = current_user
     @projects = current_user.projects
-    redirect "/users/index"
+    erb :"/projects/index"
   end
 
   get "/projects/new" do

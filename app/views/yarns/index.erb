@@ -1,1 +1,42 @@
-<h1>This is the Model's index page.</h1>
+<section class="hero is-dark">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Hey, <%= "#{@user.username}" %> - here is your yarn...
+      </h1>
+    </div>
+  </div>
+</section>
+
+<div class="hero is-light">
+    <div class="hero-body mx-6 px-6">
+
+        <div class="columns is-multiline">
+            <% @user.yarns.each do |yarn|%>
+                <div class="column is-one-quarter">
+                    <div class="card">
+                        <header class="card-header">
+                            <p class="card-header-title">
+                                <%= "#{yarn.brand}" %>: <%= "#{yarn.name}" %>
+                            </p>
+                        </header>
+                        <div class="card-content">
+                            <div class="content">
+                                Weight: <%= "#{yarn.weight}"%><br>
+                                Color: <%= "#{yarn.color}"%> hours<br>
+                                Quantity: <%= "#{yarn.quantity}" %>
+                            </div>
+                        </div>
+                        <footer class="card-footer">
+                            <a href="/yarns/<%= "#{yarn.id}" %>" class="card-footer-item">View</a>
+                            <a href="/yarns/<%= "#{yarn.id}" %>/edit" class="card-footer-item">Edit</a>
+                        </footer>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+
+    </div>
+</div>
+
+
