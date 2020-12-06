@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
 
   get "/projects" do
     @projects = current_user.projects
-    redirect "/users/#{current_user.id}"
+    redirect "/users/index"
   end
 
   get "/projects/new" do

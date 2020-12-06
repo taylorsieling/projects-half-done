@@ -23,7 +23,6 @@ class UsersController < ApplicationController
       flash[:alert] = "Invalid Login. Please try again."
       redirect "/login"
     end
-    erb :"user"
   end
 
   get "/logout" do
