@@ -28,8 +28,8 @@
       </div>
     </div>
 
-      <div class="container m-6 p-6"> 
-          <h2 class="title is-4">Project Yarn:</h2>
+      <div class="box p-6"> 
+          <h2 class="title is-4 has-text-centered">Project Yarn</h2>
       </div>
 
 
@@ -37,7 +37,7 @@
         <p class="subtitle">This project currently does not have any associated yarn!<br>
         <a href="/yarns/new">Add yarn to your project here.</a></p>
       <% else %>
-      <div class="columns is-multiline m-2">
+      <div class="columns is-multiline">
         <% @project.yarns.each do |yarn|%>
             <div class="column is-one-quarter">
                 <div class="card">

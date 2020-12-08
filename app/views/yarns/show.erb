@@ -1,21 +1,70 @@
-<h2><%= "#{@yarn.brand}" %>: <%= "#{@yarn.name}" %></h2>
-<br>
+<section class="hero is-dark">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        <%= "#{@yarn.brand}" %>: <%= "#{@yarn.name}" %>
+      </h1>
+    </div>
+  </div>
+</section>
 
-<p>Color: <%= "#{@yarn.color}" %></p>
-<p>Weight: <%= "#{@yarn.weight}" %> hours</p>
-<p>Quantity: <%= "#{@yarn.quantity}"%></p>
+<div class="hero is-light">
+  <div class="hero-body mx-6 px-6">
+    <div class="box p-6">
 
-<br><br>
+      <div class="columns"> 
+        <div class="bd-focus-itm column has-text-centered">
+          <p class="title is-4"><strong>Color:</strong></p> 
+          <p class="subtitle is-6"><%= "#{@yarn.color}" %></p>
+        </div>
+        <div class="bd-focus-itm column has-text-centered">
+          <p class="title is-4"><strong>Weight:</strong></p> 
+          <p class="subtitle is-6"><%= "#{@yarn.weight}" %></p>
+        </div>
+        <div class="bd-focus-itm column has-text-centered">
+          <p class="title is-4"><strong>Quantity: </strong></p> 
+          <p class="subtitle is-6"><%= "#{@yarn.quantity}"%></p>
+        </div>
+      </div>
+    </div>
+
+      <div class="box p-6"> 
+          <h2 class="title is-4 has-text-centered">Associated Project</h2>
+      </div>
+
+    <div class="columns is-centered">
+      <div class="column is-one-third">
+        <% if @yarn.project  == [] || @yarn.project == nil %> 
+          <p class="subtitle">This yarn currently does not belong to a project!<br>
+        <% else %>
+          <div class="card">
+
+            <header class="card-header">
+              <p class="card-header-title">
+                <%= "#{@yarn.project.name}" %>
+              </p>
+            </header>
+
+            <div class="card-content">
+              <div class="content">
+                Category: <%= "#{@yarn.project.category}"%><br>
+                Knit Time: <%= "#{@yarn.project.knit_time}"%><br>
+                Status: <%= "#{@yarn.project.status}" %>
+              </div>
+            </div>
+
+            <footer class="card-footer">
+              <a href="/yarns/<%= "#{@yarn.project.id}" %>" class="card-footer-item">View</a>
+              <a href="/yarns/<%= "#{@yarn.project.id}" %>/edit" class="card-footer-item">Edit</a>
+            </footer>
+
+          </div>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
 
 
-<div>
-
-<a class="button" href="/yarns/<%= "#{@yarn.id}" %>/edit">Edit yarn</a>
-<form action="/yarns/<%= @yarn.id %>" method="post">
-  <input id="hidden" type="hidden" name="_method" value="Delete">
-  <input type="submit" value="Delete">
-</form>
-
+  </div>
 </div>
-
-<br><br>

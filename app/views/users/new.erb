@@ -1,17 +1,130 @@
-<h1>Register for an account!</h1>
-<br>
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+  
+  <head>
 
-<form method="POST" action="/signup">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 
-    <p><label for="username">Username: </label>
-    <input type="text" name="user[username]" id="username"></p>
+    <title>Projects Half Done</title>
 
-    <p><label for="email">Email: </label>
-    <input type="email" name="user[email]" id="email"></p>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- ↑ BULMA REQUIREMENT : this line makes the site RESPONSIVE -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <!-- ↑ BULMA : Predesigned external CSS : 'free, open source CSS framework based on Flexbox..' "https://github.com/jgthms/bulma/blob/master/css/bulma.css"-->
 
-    <p><label for="password">Password: </label>
-    <input type="password" name="user[password]" id="password"></p>
+    <!-- <link rel="stylesheet" href="/stylesheets/main.css" /> -->
+  </head>
 
-    <p><input type="submit" value="Register"></p>
+  <body>
 
-</form>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <img src="/images/phd-nav-logo.png" width="112" height="28" alt="Logo">
+        </a>
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-dark" href="/signup">
+              <strong>Sign up</strong>
+            </a>
+            <a class="button is-light" href="/login">
+              Log in
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+    <div class="hero is-light">
+        <div class="hero-body mx-6 px-6">
+
+        <div class="columns">
+            <div class="column is-half">
+                <div class="container p-6"> 
+                    <h2 class="title is-4">Register for an account!</h2>
+                    <h2 class="subtitle is-6">Create projects, add yarn, and get organized - so your projects half done can become projects completed.</h2>
+                </div>
+            </div>
+
+            <div class="columns is-half">
+                <div class="container p-6">
+                    <form method="POST" action="/signup">
+
+                        <div class="field">
+                            <label for="username" class="label">Username</label>
+                            <div class="control has-icons-left">
+                                <input class="input is-medium" type="text" name="user[username]" id="username">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="email" class="label">Email</label>
+                            <div class="control has-icons-left">
+                                <input class="input is-medium" type="email" name="user[email]" id="email">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="password" class="label">Password</label>
+                            <div class="control">
+                                <input class="input is-medium" type="password" name="user[password]" id="password">
+                            </div>
+                        </div>
+
+                        <br><br>
+
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <input type="submit" value="Register" class="button is-medium is-dark">
+                            </div>
+                            <div class="control">
+                                <button class="button is-medium"><a href="/">Cancel</a></button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div> 
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Projects Half Done</strong> by Taylor Sieling. The source code is licensed
+          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+        </p>
+      </div>
+    </footer>
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <!--[if lt IE 7]>
+      <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+      <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+    <![endif]-->
+  </body>
+</html>
+
+
