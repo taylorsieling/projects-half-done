@@ -1,29 +1,74 @@
-<h1>Edit your Project!</h1>
-<br>
+<section class="hero is-dark">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Edit your project!
+      </h1>
+    </div>
+  </div>
+</section>
 
-<form method="POST" action="/projects/<%= @project.id %>" >
+<div class="hero is-light">
 
-    <input id="hidden" type="hidden" name="_method" value="patch">
+    <div class="hero-body mx-6 px-6">
 
-    <p><label for="name">Project Name: </label>
-    <input type="text" name="project[name]" id="name" value="<%= @project.name %>"></p>
+        <form method="POST" action="/projects/<%= @project.id %>" >
+            <input id="hidden" type="hidden" name="_method" value="patch">
 
-    <p><label for="category">Project Category: </label>
-    <input type="text" name="project[category]" id="category" value="<%= @project.category %>"></p>
+            <div class="field">
+                <label for="name" class="label">Project Name: </label>
+                <div class="control">
+                    <input class="input is-medium" type="text" name="project[name]" id="name" value="<%= @project.name %>">
+                </div>
+            </div>
 
-    <p><label for="knit_time">Knit Time: </label>
-    <input type="number" name="project[knit_time]" id="knit_time" value="<%= @project.knit_time %>"></p>
+            <div class="field">
+                <label for="category" class="label">Category: </label>
+                <div class="control">
+                    <input class="input is-medium" type="text" name="project[category]" id="category" value="<%= @project.category %>">
+                </div>
+            </div>
 
-    <p>Current Status: <%= @project.status %></p>
-    
-    <p>New Status:</p>
-    <label for="status">Not Started</label>
-    <input type="radio" name="project[status]" id="status" value="Not Started"></p>
-    <label for="status">In Progress</label>
-    <input type="radio" name="project[status]" id="status" value="In Progress"></p>
-    <label for="status">Completed</label>
-    <input type="radio" name="project[status]" id="status" value="Completed"></p>
+            <div class="field">
+                <label for="knit_time" class="label">Knit Time:</label>
+                <div class="control">
+                    <input class="input is-medium" type="number" name="project[knit_time]" id="knit_time" value="<%= @project.knit_time %>">
+                </div>
+                <p class="help">Knit Time is in hours.</p>
+            </div>
 
-    <p><input type="submit" value="Update"></p>
+            <div class="field">
+                <label class="label">Current Status: <%= @project.status %></label>
+                <label for="status" class="label">New Status:</label>
+                <div class="control">
+                    <label class="radio">
+                        <input type="radio" name="project[status]" id="status" value="Not Started">
+                        Not Started
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="project[status]" id="status" value="In Progress">
+                        In Progress
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="project[status]" id="status" value="Completed">
+                        Completed
+                    </label>
+                </div>
+            </div>
 
-</form>
+            <br><br>
+
+            <div class="field is-grouped is-grouped-right px-6 mx-6 pb-6 mb-6">
+                <div class="control">
+                     <input type="submit" class="button is-medium is-dark" value="Update">
+                </div>
+                <div class="control">
+                    <button class="button is-medium"><a href="/projects/<%="#{current_user.id}"%>">Cancel</a></button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

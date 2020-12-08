@@ -10,8 +10,8 @@
 
 <div class="hero is-light">
   <div class="hero-body mx-6 px-6">
-    <div class="box p-6">
 
+    <div class="box p-6">
       <div class="columns"> 
         <div class="bd-focus-itm column has-text-centered">
           <p class="title is-4"><strong>Color:</strong></p> 
@@ -28,12 +28,14 @@
       </div>
     </div>
 
-      <div class="box p-6"> 
-          <h2 class="title is-4 has-text-centered">Associated Project</h2>
+    <div class="columns">
+      <div class="column is-half">
+        <div class="box p-6"> 
+          <br><br><h2 class="title is-4 has-text-centered">Associated Project</h2><br>
+        </div>
       </div>
 
-    <div class="columns is-centered">
-      <div class="column is-one-third">
+      <div class="column is-half">
         <% if @yarn.project  == [] || @yarn.project == nil %> 
           <p class="subtitle">This yarn currently does not belong to a project!<br>
         <% else %>
@@ -54,17 +56,30 @@
             </div>
 
             <footer class="card-footer">
-              <a href="/yarns/<%= "#{@yarn.project.id}" %>" class="card-footer-item">View</a>
-              <a href="/yarns/<%= "#{@yarn.project.id}" %>/edit" class="card-footer-item">Edit</a>
+              <a href="/projects/<%= "#{@yarn.project.id}" %>" class="card-footer-item">View</a>
+              <a href="/projects/<%= "#{@yarn.project.id}" %>/edit" class="card-footer-item">Edit</a>
             </footer>
 
           </div>
-              </div>
-          <% end %>
-        </div>
+          
+        <% end %>
+
       </div>
     </div>
 
+    <form action="/yarns/<%= @yarn.id %>" method="post">
+      <input id="hidden" type="hidden" name="_method" value="Delete">
+
+      <div class="field is-grouped is-grouped-right my-6">
+        <div class="control">
+            <button class="button is-medium"><a href="/projects/<%="#{@yarn.id}"%>"> &nbsp Edit &nbsp </a></button>
+        </div>
+        <div class="control">
+            <input class="button is-medium is-dark" type="submit" value="Delete">
+        </div>
+      </div>
+      
+    </form>
 
   </div>
 </div>

@@ -28,51 +28,62 @@
       </div>
     </div>
 
-      <div class="box p-6"> 
-          <h2 class="title is-4 has-text-centered">Project Yarn</h2>
-      </div>
+    <div class="box p-6"> 
+        <h2 class="title is-4 has-text-centered">Project Yarn</h2>
+    </div>
 
 
-      <% if @project.yarns  == [] || @project.yarns == nil %> 
-        <p class="subtitle">This project currently does not have any associated yarn!<br>
-        <a href="/yarns/new">Add yarn to your project here.</a></p>
-      <% else %>
-      <div class="columns is-multiline">
-        <% @project.yarns.each do |yarn|%>
-            <div class="column is-one-quarter">
-                <div class="card">
+    <% if @project.yarns  == [] || @project.yarns == nil %> 
+      <p class="subtitle">This project currently does not have any associated yarn!<br>
+      <a href="/yarns/new">Add yarn to your project here.</a></p>
+    <% else %>
+    <div class="columns is-multiline">
+      <% @project.yarns.each do |yarn|%>
+          <div class="column is-one-quarter">
+              <div class="card">
 
-                    <header class="card-header">
-                      <p class="card-header-title">
-                        <%= "#{yarn.brand}" %>: <%= "#{yarn.name}" %>
-                      </p>
-                    </header>
+                  <header class="card-header">
+                    <p class="card-header-title">
+                      <%= "#{yarn.brand}" %>: <%= "#{yarn.name}" %>
+                    </p>
+                  </header>
 
-                    <div class="card-content">
-                      <div class="content">
-                        Weight: <%= "#{yarn.weight}"%><br>
-                        Color: <%= "#{yarn.color}"%><br>
-                        Quantity: <%= "#{yarn.quantity}" %>
-                      </div>
+                  <div class="card-content">
+                    <div class="content">
+                      Weight: <%= "#{yarn.weight}"%><br>
+                      Color: <%= "#{yarn.color}"%><br>
+                      Quantity: <%= "#{yarn.quantity}" %>
                     </div>
+                  </div>
 
-                    <footer class="card-footer">
-                      <a href="/yarns/<%= "#{yarn.id}" %>" class="card-footer-item">View</a>
-                      <a href="/yarns/<%= "#{yarn.id}" %>/edit" class="card-footer-item">Edit</a>
-                    </footer>
+                  <footer class="card-footer">
+                    <a href="/yarns/<%= "#{yarn.id}" %>" class="card-footer-item">View</a>
+                    <a href="/yarns/<%= "#{yarn.id}" %>/edit" class="card-footer-item">Edit</a>
+                  </footer>
 
-                </div>
-            </div>
-        <% end %>
-      </div>
+              </div>
+          </div>
       <% end %>
+    </div>
+    <% end %>
+
+    <form action="/projects/<%= @project.id %>" method="post">
+      <input id="hidden" type="hidden" name="_method" value="Delete">
+
+      <div class="field is-grouped is-grouped-right my-6">
+        <div class="control">
+            <button class="button is-medium"><a href="/projects/<%="#{@project.id}"%>"> &nbsp Edit &nbsp </a></button>
+        </div>
+        <div class="control">
+            <input class="button is-medium is-dark" type="submit" value="Delete">
+        </div>
+      </div>
+      
+    </form>
 
   </div>
 </div>
 
+  
+  
 
-<a class="button" href="/projects/<%= "#{@project.id}" %>/edit">Edit Project</a>
-<form action="/projects/<%= @project.id %>" method="post">
-  <input id="hidden" type="hidden" name="_method" value="Delete">
-  <input type="submit" value="Delete">
-</form>
