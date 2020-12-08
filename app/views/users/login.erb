@@ -62,6 +62,15 @@
 
             <div class="columns is-half">
                 <div class="container p-6">
+
+
+                    <!--Error-->
+                    <div class="container">
+                      <% if flash[:alert] %>
+                        <%= flash[:alert] %>
+                      <% end %>
+                  </div><br>
+
                     <form method="POST" action="/login">
 
                         <div class="field">
