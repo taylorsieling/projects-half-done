@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   get "/login" do
-    erb :"/users/login"
+    erb :"/users/login", :layout => false
   end
 
   post "/login" do
