@@ -13,6 +13,7 @@ gem 'bcrypt'
 gem 'tux'
 gem 'dotenv'
 gem 'sinatra-flash'
+gem 'email_validator'
 
 
 group :test do

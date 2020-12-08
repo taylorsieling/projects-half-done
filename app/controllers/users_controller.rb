@@ -1,17 +1,30 @@
 class UsersController < ApplicationController
 
   get "/signup" do
-    erb :"/users/new", :layout => false
+    if !logged_in?
+      erb :"/users/new", :layout => false
+    else
+      redirect "/users/#{@user.id}"
+    end
   end
 
   post "/signup" do
-    @user = User.create(params[:user])
-    session[:user_id] = @user.id
-    redirect "/users/#{@user.id}"
+    @user = User.new(params[:user])
+    if @user.save
+      session[:user_id] = @user.id
+      redirect "/users/#{@user.id}"
+    else
+      @errors = @user.errors.full_messages
+      erb :"users/new", :layout => false
+    end
   end
 
   get "/login" do
+    if logged_in?
+      redirect "/users/#{@user.id}"
+    else
     erb :"/users/login", :layout => false
+    end
   end
 
   post "/login" do
@@ -26,8 +39,12 @@ class UsersController < ApplicationController
   end
 
   get "/logout" do
-    session.clear
-    redirect '/'
+    if logged_in?
+      session.clear
+      reidrect "/login"
+    else
+      redirect '/'
+    end
   end
 
   get "/users/:id" do
