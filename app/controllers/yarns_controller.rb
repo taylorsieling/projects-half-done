@@ -12,7 +12,7 @@ class YarnsController < ApplicationController
 
   post "/yarns" do
     @yarn = Yarn.create(params[:yarn])
-    redirect "/yarns"
+    redirect "/yarns/#{@yarn.id}"
   end
 
   get "/yarns/:id" do
@@ -21,6 +21,7 @@ class YarnsController < ApplicationController
   end
 
   get "/yarns/:id/edit" do
+    @projects = current_user.projects
     @yarn = Yarn.find_by_id(params[:id])
     erb :"/yarns/edit"
   end

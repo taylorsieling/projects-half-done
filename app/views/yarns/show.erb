@@ -37,7 +37,9 @@
 
       <div class="column is-half">
         <% if @yarn.project  == [] || @yarn.project == nil %> 
-          <p class="subtitle">This yarn currently does not belong to a project!<br>
+          <div class="box p-6 has-text-centered">
+            <br><br><p class="subtitle">This yarn currently does not belong to a project!<br><br>
+          </div>
         <% else %>
           <div class="card">
 
@@ -72,7 +74,7 @@
 
       <div class="field is-grouped is-grouped-right my-6">
         <div class="control">
-            <button class="button is-medium"><a href="/projects/<%="#{@yarn.id}"%>"> &nbsp Edit &nbsp </a></button>
+            <button class="button is-medium"><a href="/yarns/<%="#{@yarn.id}"%>/edit"> &nbsp Edit &nbsp </a></button>
         </div>
         <div class="control">
             <input class="button is-medium is-dark" type="submit" value="Delete">
