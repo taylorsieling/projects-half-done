@@ -13,8 +13,14 @@
 
         <div class="container py-6"> 
             <h2 class="title is-4">Your Projects:</h2>
-        </div>
         
+        <% if @user.projects  == [] || @user.projects == nil %> 
+            <br><p class="subtitle">You do not have any projects!<br>
+            <a href="/projects/new">Create your first project here.</a></p>
+        <% else %>
+
+        </div>
+
         <div class="columns is-multiline">
             <% @user.projects.each do |project|%>
                 <div class="column is-one-quarter">
@@ -40,13 +46,20 @@
             <% end %>
         </div>
 
+        <% end %>
+
         <br><br>
 
         <div class="container py-6"> 
             <h2 class="title is-4">Your Yarn:</h2>
+
+        <% if @user.yarns  == [] || @user.yarns == nil %> 
+            <br><p class="subtitle">You do not have any yarn!<br>
+            <a href="/yarns/new">Add your first hank of yarn here.</a></p>
+        <% else %>
         </div>
         
-        <div class="columns is-multiline is-mobile">
+        <div class="columns is-multiline">
             <% @user.yarns.each do |yarn|%>
                 <div class="column is-one-quarter">
                     <div class="card">
@@ -70,6 +83,8 @@
                 </div>
             <% end %>
         </div>
+
+        <% end %>
 
     </div>
 </div>
