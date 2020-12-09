@@ -43,11 +43,15 @@ class YarnsController < ApplicationController
     end
   end
 
-  delete "/yarns/:id/delete" do
-    yarn = Yarn.find_by_id(params[:id])
-    flash[:message] = "#{yarn.brand}: #{yarn.name} has been deleted successfully!"
-    project.destroy
+  delete "/yarns/:id" do
+    @yarn = Yarn.find_by_id(params[:id])
+    if @yarn.user != current_user
+      redirect to '/'
+    else 
+    flash[:message] = "#{@yarn.brand}: #{@yarn.name} has been deleted successfully!"
+    @yarn.destroy
     redirect "/yarns"
+    end
   end
 
 end

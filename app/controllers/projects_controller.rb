@@ -45,12 +45,12 @@ class ProjectsController < ApplicationController
   end
 
   delete "/projects/:id" do
-    project = Project.find_by_id(params[:id])
-    if project.user != current_user
+    @project = Project.find_by_id(params[:id])
+    if @project.user != current_user
       redirect to '/'
     else 
-      flash[:message] = "#{project.name} has been deleted successfully!"
-      project.destroy
+      flash[:message] = "#{@project.name} has been deleted successfully!"
+      @project.destroy
       redirect "/projects"
     end
   end
