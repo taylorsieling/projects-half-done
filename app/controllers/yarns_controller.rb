@@ -11,8 +11,15 @@ class YarnsController < ApplicationController
   end
 
   post "/yarns" do
-    @yarn = Yarn.create(params[:yarn])
-    redirect "/yarns/#{@yarn.id}"
+    @yarn = Yarn.new(params[:yarn])
+    if @yarn.save
+      current_user.yarns << @yarn
+      flash[:notice] = "You have successfully added your hank of yarn!"
+      redirect "/yarns/#{@yarn.id}"
+    else
+      flash[:notice] = "Brand, Name, Weight, Color, and Quantity are required."
+      redirect "yarns/new"
+    end
   end
 
   get "/yarns/:id" do
