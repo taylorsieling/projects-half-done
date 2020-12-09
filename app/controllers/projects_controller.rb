@@ -14,10 +14,10 @@ class ProjectsController < ApplicationController
     project = Project.new(params[:project])
     if project.save
       current_user.projects << project
-      flash[:notice] = "You have successfully created a new project!"
+      flash[:message] = "You have successfully created a new project!"
       redirect "/projects/#{project.id}"
     else
-      flash[:message] = "All fields are required."
+      flash[:notice] = "Name, Category, and Knit Time are required."
       redirect "projects/new"
     end
   end
