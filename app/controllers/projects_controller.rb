@@ -33,7 +33,6 @@ class ProjectsController < ApplicationController
     erb :"/projects/edit"
   end
 
-  # PATCH: /projects/5
   patch "/projects/:id" do
     user = current_user
     @project = Project.find_by_id(params[:id])
