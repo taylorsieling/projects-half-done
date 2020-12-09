@@ -1,11 +1,13 @@
 class YarnsController < ApplicationController
 
   get "/yarns" do
+    redirect_if_not_logged_in
     @user = current_user
     erb :"/yarns/index"
   end
 
   get "/yarns/new" do
+    redirect_if_not_logged_in
     @projects = current_user.projects
     erb :"/yarns/new"
   end
@@ -23,11 +25,13 @@ class YarnsController < ApplicationController
   end
 
   get "/yarns/:id" do
+    redirect_if_not_logged_in
     @yarn = Yarn.find_by_id(params[:id])
     erb :"/yarns/show"
   end
 
   get "/yarns/:id/edit" do
+    redirect_if_not_logged_in
     @projects = current_user.projects
     @yarn = Yarn.find_by_id(params[:id])
     erb :"/yarns/edit"

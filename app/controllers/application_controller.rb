@@ -30,6 +30,21 @@ class ApplicationController < Sinatra::Base
       User.find_by(id: session[:user_id])
     end
 
+    # redirects user that are not logged in
+    def redirect_if_not_logged_in
+      redirect to "/login" if !logged_in?
+    end
+
+    # only shows users authorized pages
+    def authorized?
+      @project = Project.find_by_id(params[:id])
+      @yarn = Yarn.find_by_id(params[:id])
+      if @project.user != current_user || @yarn.user != current_user
+        flash[:notice] = "Not Authorized"
+        redirect to "/"
+      end
+    end
+
   end
 
 end

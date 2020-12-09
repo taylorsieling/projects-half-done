@@ -49,7 +49,12 @@ class UsersController < ApplicationController
 
   get "/users/:id" do
     @user = User.find_by(id: params[:id])
-    erb :"/users/show"
+    if @user == current_user
+      erb :"/users/show"
+    else
+      flash[:alert] = "Not authorized."
+      redirect "/"
+    end
   end
 
   get "/users/:id/edit" do
