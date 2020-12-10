@@ -4,6 +4,8 @@
 
 Projects Half Done is a Sinatra application made for my Flatiron School portfolio. Projects Half Done allows users to create and save knitting or other fiber arts projects. A user can also create hanks of yarn and associate them with their created projects. 
 
+Projects have a name, category, knit time, and status (not started, in progress, completed). Yarn has a brand, name, color, weight, and quantity. Yarn can be associated with a project, or saved to be added to a project at a later date.
+
 ## Install Instructions
 
 1. Fork and Clone
