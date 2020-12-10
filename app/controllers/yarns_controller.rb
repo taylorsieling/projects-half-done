@@ -16,10 +16,10 @@ class YarnsController < ApplicationController
     @yarn = Yarn.new(params[:yarn])
     if @yarn.save
       current_user.yarns << @yarn
-      flash[:notice] = "You have successfully added your hank of yarn!"
+      flash[:message] = "You have successfully added your hank of yarn!"
       redirect "/yarns/#{@yarn.id}"
     else
-      flash[:notice] = "Brand, Name, Weight, Color, and Quantity are required."
+      flash[:message] = "Brand, Name, Weight, Color, and Quantity are required."
       redirect "yarns/new"
     end
   end
@@ -27,7 +27,13 @@ class YarnsController < ApplicationController
   get "/yarns/:id" do
     redirect_if_not_logged_in
     @yarn = Yarn.find_by_id(params[:id])
-    erb :"/yarns/show"
+
+    if @yarn.user != current_user
+      flash[:alert] = "You are not authorized to view that yarn. Please choose one of the hanks below."
+      redirect "/yarns"
+    else
+      erb :"/yarns/show"
+    end
   end
 
   get "/yarns/:id/edit" do

@@ -40,8 +40,15 @@ class ApplicationController < Sinatra::Base
       @project = Project.find_by_id(params[:id])
       @yarn = Yarn.find_by_id(params[:id])
       if @project.user != current_user || @yarn.user != current_user
-        flash[:notice] = "Not Authorized"
         redirect to "/"
+      end
+    end
+
+    # checks if resources exists
+    def exists?
+      @project = Project.find_by_id(params[:id])
+      @yarn = Yarn.find_by_id(params[:id])
+      if @project != nil || @yarn != nil
       end
     end
 

@@ -19,18 +19,19 @@ class ProjectsController < ApplicationController
       flash[:message] = "You have successfully created a new project!"
       redirect "/projects/#{project.id}"
     else
-      flash[:notice] = "Name, Category, and Knit Time are required."
+      flash[:message] = "Name, Category, and Knit Time are required."
       redirect "projects/new"
     end
   end
 
   get "/projects/:id" do
     redirect_if_not_logged_in
-    if authorized?
     @project = Project.find_by_id(params[:id])
-    erb :"/projects/show"
+    if @project.user != current_user
+      flash[:alert] = "You are not authorized to view that project. Please choose one of the projects below."
+      redirect "/projects"
     else
-      flash[:alert] = "Not Authorized"
+      erb :"/projects/show"
     end
   end
 
