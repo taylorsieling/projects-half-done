@@ -22,4 +22,4 @@ Projects have a name, category, knit time, and status (not started, in progress,
 
 ## License
 
-The app is available as open source under the terms of the MIT License. https://github.com/ferrufinob/sweat_planner/blob/master/LICENSE
+The app is available as open source under the terms of the MIT License.
