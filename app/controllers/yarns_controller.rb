@@ -40,7 +40,12 @@ class YarnsController < ApplicationController
     redirect_if_not_logged_in
     @projects = current_user.projects
     @yarn = Yarn.find_by_id(params[:id])
-    erb :"/yarns/edit"
+    if @yarn.user != current_user
+      flash[:alert] = "You are not authorized to edit that yarn. Please choose one of the hanks below."
+      redirect "/yarns"
+    else
+      erb :"/yarns/edit"
+    end
   end
 
   patch "/yarns/:id" do

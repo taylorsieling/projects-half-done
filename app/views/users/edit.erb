@@ -11,6 +11,14 @@
 
             <div class="columns is-half">
                 <div class="container p-6">
+
+                    <!--Error-->
+                    <div class="container">
+                    <% if flash[:alert] || flash[:message] %>
+                        <%= flash[:alert] || flash[:message] %>
+                    <% end %>
+                    </div><br>
+
                     <form method="POST" action="/users/<%= @user.id %>" >
                         <input id="hidden" type="hidden" name="_method" value="patch">
 
