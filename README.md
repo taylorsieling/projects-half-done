@@ -20,6 +20,6 @@ Projects have a name, category, knit time, and status (not started, in progress,
 - Add your hanks of yarn; Yarn can be associated with a project, or saved to add to a project later.
 - Your projects and hanks of yarn can updated or deleted at any time.
 
-## License
+## License 
 
-The app is available as open source under the terms of the MIT License.
+The app is available as open source under the terms of the MIT License. (https://opensource.org/licenses/MIT)
