@@ -3,12 +3,12 @@ sa = User.create({username: "serynarweiniad", email: "seryna@email.com", passwor
 ts = User.create({username: "tealstagheart", email: "teals@email.com", password: "warlocksrock"})
 oi = User.create({username: "opheliainkwell", email: "opheliai@email.com", password: "wizardsrock"})
 
-hat = Project.create({name: "Mushroom Hat", category: "Apparel", knit_time: 5, user_id: hh.id})
-bag = Project.create({name: "Bag of Holding", category: "Accessory", knit_time: 10, user_id: hh.id})
-scarf = Project.create({name: "Celtic Cable Scarf", category: "Apparel", knit_time: 25, user_id: sa.id})
-sweater = Project.create({name: "Feywild Sweater", category: "Apparel", knit_time: 40, user_id: ts.id})
-blanket = Project.create({name: "Blanket of Warming", category: "Homegood", knit_time: 80, user_id: oi.id})
-ornament = Project.create({name: "Ornament of Holiday Spirit", category: "Homegood", knit_time: 2, user_id: oi.id})
+hat = Project.create({name: "Mushroom Hat", category: "Apparel", knit_time: 5, status: "Not Started", user_id: hh.id})
+bag = Project.create({name: "Bag of Holding", category: "Accessory", knit_time: 10, status: "In Progress", user_id: hh.id})
+scarf = Project.create({name: "Celtic Cable Scarf", category: "Apparel", knit_time: 25, status: "Completed", user_id: sa.id})
+sweater = Project.create({name: "Feywild Sweater", category: "Apparel", knit_time: 40, status: "Not Started", user_id: ts.id})
+blanket = Project.create({name: "Blanket of Warming", category: "Homegood", knit_time: 80, status: "In Progress", user_id: oi.id})
+ornament = Project.create({name: "Ornament of Holiday Spirit", category: "Homegood", knit_time: 2, status: "Not Started", user_id: oi.id})
 
 Yarn.create({brand: "KnitPicks",name: "Wool of the Andes", weight: 4, color: "Oyster Heather", quantity: 1, project_id: hat.id, user_id: hh.id})
 Yarn.create({brand: "KnitPicks",name: "Wool of the Andes", weight: 4, color: "White", quantity: 1, project_id: hat.id, user_id: hh.id})
