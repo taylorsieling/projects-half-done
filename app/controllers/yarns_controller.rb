@@ -27,7 +27,6 @@ class YarnsController < ApplicationController
   get "/yarns/:id" do
     redirect_if_not_logged_in
     @yarn = Yarn.find_by_id(params[:id])
-
     if @yarn.user != current_user
       flash[:alert] = "You are not authorized to view that yarn. Please choose one of the hanks below."
       redirect "/yarns"
