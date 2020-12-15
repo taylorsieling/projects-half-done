@@ -13,9 +13,8 @@ class YarnsController < ApplicationController
   end
 
   post "/yarns" do
-    @yarn = Yarn.new(params[:yarn])
+    current_user.Yarn.new(params[:yarn])
     if @yarn.save
-      current_user.yarns << @yarn
       flash[:message] = "You have successfully added your hank of yarn!"
       redirect "/yarns/#{@yarn.id}"
     else
@@ -27,24 +26,16 @@ class YarnsController < ApplicationController
   get "/yarns/:id" do
     redirect_if_not_logged_in
     @yarn = Yarn.find_by_id(params[:id])
-    if @yarn.user != current_user
-      flash[:alert] = "You are not authorized to view that yarn. Please choose one of the hanks below."
-      redirect "/yarns"
-    else
-      erb :"/yarns/show"
-    end
+    authorized?(@yarn.user)
+    erb :"/yarns/show"
   end
 
   get "/yarns/:id/edit" do
     redirect_if_not_logged_in
     @projects = current_user.projects
     @yarn = Yarn.find_by_id(params[:id])
-    if @yarn.user != current_user
-      flash[:alert] = "You are not authorized to edit that yarn. Please choose one of the hanks below."
-      redirect "/yarns"
-    else
-      erb :"/yarns/edit"
-    end
+    authorized?(@yarn.user)
+    erb :"/yarns/edit"
   end
 
   patch "/yarns/:id" do
@@ -59,13 +50,10 @@ class YarnsController < ApplicationController
 
   delete "/yarns/:id" do
     @yarn = Yarn.find_by_id(params[:id])
-    if @yarn.user != current_user
-      redirect to '/'
-    else 
+    authorized?(@yarn.user)
     flash[:message] = "#{@yarn.brand}: #{@yarn.name} has been deleted successfully!"
     @yarn.destroy
     redirect "/yarns"
-    end
   end
 
 end

@@ -35,7 +35,6 @@ class ProjectsController < ApplicationController
     @project = Project.find_by_id(params[:id])
     authorized?(@project.user)
     erb :"/projects/edit"
-    end
   end
 
   patch "/projects/:id" do
@@ -51,13 +50,10 @@ class ProjectsController < ApplicationController
 
   delete "/projects/:id" do
     @project = Project.find_by_id(params[:id])
-    if @project.user != current_user
-      redirect to '/'
-    else 
-      flash[:message] = "#{@project.name} has been deleted successfully!"
-      @project.destroy
-      redirect "/projects"
-    end
+    authorized?(@project.user)
+    flash[:message] = "#{@project.name} has been deleted successfully!"
+    @project.destroy
+    redirect "/projects"
   end
   
 end
