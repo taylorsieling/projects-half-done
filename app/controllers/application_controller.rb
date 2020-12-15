@@ -44,12 +44,14 @@ class ApplicationController < Sinatra::Base
     # only shows users authorized pages
     def authorized?(user)
       if user != current_user
+        flash[:alert] = "Not Authorized."
         redirect to "/"
       end
     end
 
-    def find_by_id
-    end
+    # def find_by_id(object)
+    #   object.find_by_id(params[:id])
+    # end
 
   end
 

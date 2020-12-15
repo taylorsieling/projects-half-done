@@ -27,22 +27,15 @@ class ProjectsController < ApplicationController
   get "/projects/:id" do
     redirect_if_not_logged_in
     @project = Project.find_by_id(params[:id])
-    if @project.user != current_user
-      flash[:alert] = "You are not authorized to view that project. Please choose one of the projects below."
-      redirect "/projects"
-    else
-      erb :"/projects/show"
-    end
+    authorized?(@project.user)
+    erb :"projects/show"
   end
 
   get "/projects/:id/edit" do
     redirect_if_not_logged_in
     @project = Project.find_by_id(params[:id])
-    if @project.user != current_user
-      flash[:alert] = "You are not authorized to edit that project. Please choose one of the projects below."
-      redirect "/projects"
-    else
-      erb :"/projects/edit"
+    authorized?(@project.user)
+    erb :"/projects/edit"
     end
   end
 
