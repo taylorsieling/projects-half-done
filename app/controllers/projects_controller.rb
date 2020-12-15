@@ -25,21 +25,20 @@ class ProjectsController < ApplicationController
 
   get "/projects/:id" do
     redirect_if_not_logged_in
-    @project = Project.find_by_id(params[:id])
-    authorized?(@project.user)
+    find_by_project
     erb :"projects/show"
   end
 
   get "/projects/:id/edit" do
     redirect_if_not_logged_in
-    @project = Project.find_by_id(params[:id])
+    find_by_project
     authorized?(@project.user)
     erb :"/projects/edit"
   end
 
   patch "/projects/:id" do
     user = current_user
-    @project = Project.find_by_id(params[:id])
+    find_by_project
     @project.update(params[:project])
     if @project.save
       redirect "/projects/#{@project.id}"
@@ -49,10 +48,10 @@ class ProjectsController < ApplicationController
   end
 
   delete "/projects/:id" do
-    @project = Project.find_by_id(params[:id])
+    find_by_project
     authorized?(@project.user)
-    flash[:message] = "#{@project.name} has been deleted successfully!"
     @project.destroy
+    flash[:message] = "#{@project.name} has been deleted successfully!"
     redirect "/projects"
   end
   

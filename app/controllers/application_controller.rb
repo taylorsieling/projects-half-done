@@ -49,10 +49,12 @@ class ApplicationController < Sinatra::Base
       end
     end
 
-    # def find_by_id(object)
-    #   object.find_by_id(params[:id])
-    # end
+    def find_by_project
+      @project = Project.find_by_id(params[:id])
+    end
 
-  end
+    def find_by_yarn
+      @yarn = Yarn.find_by_id(params[:id])
+    end
 
 end
