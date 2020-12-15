@@ -13,9 +13,8 @@ class ProjectsController < ApplicationController
   end
 
   post "/projects" do
-    project = Project.new(params[:project])
+    current_user.Project.new(params[:project])
     if project.save
-      current_user.projects << project
       flash[:message] = "You have successfully created a new project!"
       redirect "/projects/#{project.id}"
     else
