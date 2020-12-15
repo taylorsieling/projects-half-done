@@ -18,6 +18,12 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  not_found do 
+    status 404
+    flash[:alert] = "Resource not found."
+    redirect "/users/#{current_user.id}"
+  end 
+
   helpers do 
 
     # checks if user is logged in
@@ -36,12 +42,13 @@ class ApplicationController < Sinatra::Base
     end
 
     # only shows users authorized pages
-    def authorized?
-      @project = Project.find_by_id(params[:id])
-      @yarn = Yarn.find_by_id(params[:id])
-      if @project.user != current_user || @yarn.user != current_user
+    def authorized?(user)
+      if user != current_user
         redirect to "/"
       end
+    end
+
+    def find_by_id
     end
 
   end

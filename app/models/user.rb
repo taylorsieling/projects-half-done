@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
     validates :username, presence: true
     validates :username, uniqueness: true
-    validates :password_digest, :email, presence: true
+    validates :email, presence: true
     validates :email, uniqueness: true
     validates :email, email: true
 end
