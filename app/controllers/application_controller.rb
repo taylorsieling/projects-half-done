@@ -57,14 +57,5 @@ class ApplicationController < Sinatra::Base
     def find_by_yarn
       @yarn = Yarn.find_by_id(params[:id])
     end
-
-    # before '/projects/*' do 
-    #   redirect_if_not_logged_in
-    # end
-
-    # before '/yarns/*' do
-    #   redirect_if_not_logged_in
-    # end
-    
     
 end

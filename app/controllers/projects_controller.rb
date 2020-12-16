@@ -4,19 +4,21 @@ class ProjectsController < ApplicationController
     redirect_if_not_logged_in
   end
 
+  # before '/projects/*' do
+  #   @project = Project.find_by_id(params[:id])
+  # end
+
   get "/projects" do
-    # redirect_if_not_logged_in
     @projects = current_user.projects
     erb :"/projects/index"
   end
 
   get "/projects/new" do
-    # redirect_if_not_logged_in
     erb :"/projects/new"
   end
 
   post "/projects" do
-    current_user.Project.new(params[:project])
+    project = current_user.projects.new(params[:project])
     if project.save
       flash[:message] = "You have successfully created a new project!"
       redirect "/projects/#{project.id}"
@@ -27,14 +29,12 @@ class ProjectsController < ApplicationController
   end
 
   get "/projects/:id" do
-    # redirect_if_not_logged_in
     find_by_project
     authorized?(@project.user)
     erb :"projects/show"
   end
 
   get "/projects/:id/edit" do
-    # redirect_if_not_logged_in
     find_by_project
     authorized?(@project.user)
     erb :"/projects/edit"

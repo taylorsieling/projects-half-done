@@ -5,22 +5,20 @@ class YarnsController < ApplicationController
   end
 
   get "/yarns" do
-    # redirect_if_not_logged_in
     @user = current_user
     erb :"/yarns/index"
   end
 
   get "/yarns/new" do
-    # redirect_if_not_logged_in
     @projects = current_user.projects
     erb :"/yarns/new"
   end
 
   post "/yarns" do
-    current_user.Yarn.new(params[:yarn])
-    if @yarn.save
+    yarn = current_user.yarns.new(params[:yarn])
+    if yarn.save
       flash[:message] = "You have successfully added your hank of yarn!"
-      redirect "/yarns/#{@yarn.id}"
+      redirect "/yarns/#{yarn.id}"
     else
       flash[:message] = "Brand, Name, Weight, Color, and Quantity are required."
       redirect "yarns/new"
@@ -28,14 +26,12 @@ class YarnsController < ApplicationController
   end
 
   get "/yarns/:id" do
-    # redirect_if_not_logged_in
     find_by_yarn
     authorized?(@yarn.user)
     erb :"/yarns/show"
   end
 
   get "/yarns/:id/edit" do
-    # redirect_if_not_logged_in
     find_by_yarn
     @projects = current_user.projects
     authorized?(@yarn.user)

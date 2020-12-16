@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  before '/users/*' do 
+    redirect_if_not_logged_in
+  end
+
   get "/signup" do
     if !logged_in?
       erb :"/users/new", :layout => false
