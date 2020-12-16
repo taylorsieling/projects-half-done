@@ -74,12 +74,12 @@
 
             <br>
             <label class="label">Add your yarn to a project:</label>
-                <% if @projects  == [] || @projects == nil %>
+                <% if current_user.projects  == [] || current_user.projects == nil %>
                     <p>You have no current projects! Please create a new one.</p>
                 <% else %>
              <br>   
             <div class="control">
-                    <% @projects.each do |project| %>
+                    <% current_user.projects.each do |project| %>
                         <label for="<%= project.id %>" class="radio">
                             <input type="radio" name="yarn[project_id]" id="<%= project.id %>" value="<%= project.id %>">
                             <%= "#{project.name}" %>

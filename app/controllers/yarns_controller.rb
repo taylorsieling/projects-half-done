@@ -4,13 +4,17 @@ class YarnsController < ApplicationController
     redirect_if_not_logged_in
   end
 
+  before '/yarns/*' do
+    redirect_if_not_logged_in
+    find_by_yarn(params["splat"][0])
+    authorized?(@yarn.user)
+  end
+
   get "/yarns" do
-    @user = current_user
     erb :"/yarns/index"
   end
 
   get "/yarns/new" do
-    @projects = current_user.projects
     erb :"/yarns/new"
   end
 
@@ -26,20 +30,14 @@ class YarnsController < ApplicationController
   end
 
   get "/yarns/:id" do
-    find_by_yarn
-    authorized?(@yarn.user)
     erb :"/yarns/show"
   end
 
   get "/yarns/:id/edit" do
-    find_by_yarn
-    @projects = current_user.projects
-    authorized?(@yarn.user)
     erb :"/yarns/edit"
   end
 
   patch "/yarns/:id" do
-    find_by_yarn
     @yarn.update(params[:yarn])
     if @yarn.save
       redirect "/yarns/#{@yarn.id}"
@@ -49,10 +47,8 @@ class YarnsController < ApplicationController
   end
 
   delete "/yarns/:id" do
-    find_by_yarn
-    authorized?(@yarn.user)
-    flash[:message] = "#{@yarn.brand}: #{@yarn.name} has been deleted successfully!"
     @yarn.destroy
+    flash[:message] = "#{@yarn.brand}: #{@yarn.name} has been deleted successfully!"
     redirect "/yarns"
   end
 

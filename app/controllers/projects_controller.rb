@@ -4,12 +4,13 @@ class ProjectsController < ApplicationController
     redirect_if_not_logged_in
   end
 
-  # before '/projects/*' do
-  #   @project = Project.find_by_id(params[:id])
-  # end
+  before '/projects/*' do
+    redirect_if_not_logged_in
+    find_by_project(params["splat"][0])
+    authorized?(@project.user)
+  end
 
   get "/projects" do
-    @projects = current_user.projects
     erb :"/projects/index"
   end
 
@@ -29,31 +30,23 @@ class ProjectsController < ApplicationController
   end
 
   get "/projects/:id" do
-    find_by_project
-    authorized?(@project.user)
     erb :"projects/show"
   end
 
   get "/projects/:id/edit" do
-    find_by_project
-    authorized?(@project.user)
     erb :"/projects/edit"
   end
 
   patch "/projects/:id" do
-    user = current_user
-    find_by_project
     @project.update(params[:project])
     if @project.save
       redirect "/projects/#{@project.id}"
     else
-      redirect "/users/#{user.id}"
+      redirect "/users/#{current_user.id}"
     end
   end
 
   delete "/projects/:id" do
-    find_by_project
-    authorized?(@project.user)
     @project.destroy
     flash[:message] = "#{@project.name} has been deleted successfully!"
     redirect "/projects"

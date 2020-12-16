@@ -19,7 +19,6 @@ class ApplicationController < Sinatra::Base
   end
 
   not_found do 
-    status 404
     flash[:alert] = "Resource not found."
     redirect "/users/#{current_user.id}"
   end 
@@ -50,12 +49,12 @@ class ApplicationController < Sinatra::Base
       end
     end
 
-    def find_by_project
-      @project = Project.find_by_id(params[:id])
+    def find_by_project(splat)
+      @project = Project.find_by_id(splat)
     end
 
-    def find_by_yarn
-      @yarn = Yarn.find_by_id(params[:id])
+    def find_by_yarn(splat)
+      @yarn = Yarn.find_by_id(splat)
     end
     
 end

@@ -2,7 +2,7 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        Hey, <%= "#{@user.username}" %> - here is your yarn...
+        Hey, <%= "#{@current_user.username}" %> - here is your yarn...
       </h1>
     </div>
   </div>
@@ -19,7 +19,7 @@
     </div><br>
 
         <div class="columns is-multiline">
-            <% @user.yarns.each do |yarn|%>
+            <% @current_user.yarns.each do |yarn|%>
                 <div class="column is-one-quarter">
                     <div class="card">
                         <header class="card-header">
