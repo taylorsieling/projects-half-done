@@ -39,6 +39,7 @@ class ApplicationController < Sinatra::Base
     # redirects user that are not logged in
     def redirect_if_not_logged_in
       redirect to "/login" if !logged_in?
+      end
     end
 
     # only shows users authorized pages
@@ -57,4 +58,13 @@ class ApplicationController < Sinatra::Base
       @yarn = Yarn.find_by_id(params[:id])
     end
 
+    # before '/projects/*' do 
+    #   redirect_if_not_logged_in
+    # end
+
+    # before '/yarns/*' do
+    #   redirect_if_not_logged_in
+    # end
+    
+    
 end

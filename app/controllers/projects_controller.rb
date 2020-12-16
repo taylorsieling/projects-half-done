@@ -1,14 +1,17 @@
 class ProjectsController < ApplicationController
 
-  get "/projects" do
+  before '/projects' do
     redirect_if_not_logged_in
-    @user = current_user
+  end
+
+  get "/projects" do
+    # redirect_if_not_logged_in
     @projects = current_user.projects
     erb :"/projects/index"
   end
 
   get "/projects/new" do
-    redirect_if_not_logged_in
+    # redirect_if_not_logged_in
     erb :"/projects/new"
   end
 
@@ -24,13 +27,14 @@ class ProjectsController < ApplicationController
   end
 
   get "/projects/:id" do
-    redirect_if_not_logged_in
+    # redirect_if_not_logged_in
     find_by_project
+    authorized?(@project.user)
     erb :"projects/show"
   end
 
   get "/projects/:id/edit" do
-    redirect_if_not_logged_in
+    # redirect_if_not_logged_in
     find_by_project
     authorized?(@project.user)
     erb :"/projects/edit"

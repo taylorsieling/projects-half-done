@@ -2,7 +2,7 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        Hey, <%= "#{@user.username}" %> - here are your projects...
+        Hey, <%= "#{current_user.username}" %> - here are your projects...
       </h1>
     </div>
   </div>
@@ -19,7 +19,7 @@
     </div><br>
 
         <div class="columns is-multiline">
-            <% @user.projects.each do |project|%>
+            <% current_user.projects.each do |project|%>
                 <div class="column is-one-quarter">
                     <div class="card">
                         <header class="card-header">
