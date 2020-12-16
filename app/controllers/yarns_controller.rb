@@ -7,7 +7,9 @@ class YarnsController < ApplicationController
   before '/yarns/*' do
     redirect_if_not_logged_in
     find_by_yarn(params["splat"][0])
-    authorized?(@yarn.user)
+    if @project != nil
+      authorized?(@yarn.user)
+    end
   end
 
   get "/yarns" do

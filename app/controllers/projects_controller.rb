@@ -7,7 +7,9 @@ class ProjectsController < ApplicationController
   before '/projects/*' do
     redirect_if_not_logged_in
     find_by_project(params["splat"][0])
-    authorized?(@project.user)
+    if @project != nil
+      authorized?(@project.user)
+    end
   end
 
   get "/projects" do
