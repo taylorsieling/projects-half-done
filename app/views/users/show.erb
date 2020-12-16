@@ -93,6 +93,20 @@
 
         <% end %>
 
+        <br><br>
+
+        <div class="field is-grouped is-grouped-right my-6">
+            <p class="control">
+                <a class="button is-medium" href="/users/<%="#{current_user.id}/edit"%>">
+                    &nbsp Edit Account &nbsp
+                </a>
+                <form action="/users/<%= "#{current_user.id}" %>" method="post">
+                    <input id="hidden" type="hidden" name="_method" value="delete">
+                    <input class="button is-medium is-dark" type="submit" value="Delete Account">
+                </form>
+            </p>
+        </div>
+
     </div>
 </div>
 

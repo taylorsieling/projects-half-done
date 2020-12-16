@@ -52,6 +52,13 @@
     <div class="hero is-light">
         <div class="hero-body mx-6 px-6">
 
+          <!--Error-->
+          <div class="container">
+            <% if flash[:alert] || flash[:message] %>
+              <%= flash[:alert] || flash[:message] %>
+            <% end %>
+          </div><br>
+
         <div class="columns">
             <div class="column is-half">
                 <div class="container p-6"> 
@@ -70,7 +77,9 @@
                         <%=error%><br>
                       <%end%>
                     <%end%>
-                  </div><br>
+                  </div>
+                  
+                  <br>
 
                     <form method="POST" action="/signup">
 

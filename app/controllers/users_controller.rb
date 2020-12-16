@@ -77,8 +77,15 @@ class UsersController < ApplicationController
     end
   end
 
-  delete "/users/:id/delete" do
-    redirect "/"
+  delete "/users/:id" do
+    if user = User.find_by(id: params[:id])
+      session.clear
+      flash[:message] = "Your account has been deleted successfully!"
+      user.destroy
+      redirect "/signup"
+    else
+      flash[:alert] = "Not Authorized."
+    end
   end
 
 end
