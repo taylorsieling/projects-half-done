@@ -49,10 +49,12 @@ class ApplicationController < Sinatra::Base
       end
     end
 
+    # finds projects by id
     def find_by_project(splat)
       @project = Project.find_by_id(splat)
     end
 
+    #finds yarns by id
     def find_by_yarn(splat)
       @yarn = Yarn.find_by_id(splat)
     end
