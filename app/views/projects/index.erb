@@ -18,6 +18,15 @@
       <% end %>
     </div><br>
 
+    <div class="container py-6"> 
+        
+      <% if current_user.projects  == [] || current_user.projects == nil %> 
+          <br><p class="subtitle">You do not have any projects!<br>
+          <a href="/projects/new">Create your first project here.</a></p>
+      <% else %>
+
+    </div>
+
         <div class="columns is-multiline">
             <% current_user.projects.each do |project|%>
                 <div class="column is-one-quarter">
@@ -42,6 +51,8 @@
                 </div>
             <% end %>
         </div>
+
+        <% end %>
 
     </div>
 </div>

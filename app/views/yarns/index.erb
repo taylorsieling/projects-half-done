@@ -18,6 +18,15 @@
       <% end %>
     </div><br>
 
+    <div class="container py-6"> 
+        
+      <% if current_user.yarns  == [] || current_user.yarns == nil %> 
+          <br><p class="subtitle">You do not have any yarn!<br>
+          <a href="/yarns/new">Create your first hank of yarn here.</a></p>
+      <% else %>
+
+    </div>
+
         <div class="columns is-multiline">
             <% current_user.yarns.each do |yarn|%>
                 <div class="column is-one-quarter">
@@ -42,6 +51,8 @@
                 </div>
             <% end %>
         </div>
+
+        <% end %>
 
     </div>
 </div>
